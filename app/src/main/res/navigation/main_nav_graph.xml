@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/transaction_nav_graph"
+app:startDestination="@id/LandingFragment">
+
+    <fragment
+        android:id="@+id/LandingFragment"
+        android:name="com.example.weathertask.ui.LandingFragment"
+        tools:layout="@layout/fragment_landing" >
+        <action
+            android:id="@+id/action_LandingFragment_to_MainFragment"
+            app:destination="@id/SearchFragment" />
+        <action
+            android:id="@+id/action_LandingFragment_to_LocationFragment"
+            app:destination="@id/LocationFragment" />
+    </fragment>
+<fragment
+    android:id="@+id/SearchFragment"
+    android:name="com.example.weathertask.ui.search.SearchFragment"
+    tools:layout="@layout/fragment_cities_weather" />
+<fragment
+    android:id="@+id/LocationFragment"
+    android:name="com.example.weathertask.ui.gps.LocationFragment"
+    tools:layout="@layout/fragment_city_forecast" />
+
+</navigation>

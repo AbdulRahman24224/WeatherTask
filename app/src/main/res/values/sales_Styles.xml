@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="smallTextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Small</item>
+        <item name="android:textColorHint">@color/black</item>
+    </style>
+
+    <style name="BoldSmallTextView" parent="smallTextView">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="LargTextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Headline</item>
+        <item name="android:textColorHint">@color/black</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+
+</resources>

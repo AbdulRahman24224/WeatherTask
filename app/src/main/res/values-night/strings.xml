@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search">Search</string>
+    <string name="error_cities_count">Cities count should be between 3 and 7</string>
+    <string name="error_city_input_format">invalid input format</string>
+    <string name="enable_GPS">Enable GPS</string>
+    <string name="per_location_needed">Location permission is needed to capture your location</string>
+    <string name="search_weather">Search Weather</string>
+    <string name="gps_weather">Gps Weather</string>
+</resources>

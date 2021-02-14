@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">WeatherTask</string>
+    <string name="search">Search</string>
+    <string name="error_cities_count">Cities count should be between 3 and 7</string>
+    <string name="error_city_input_format">invalid input format</string>
+    <string name="enable_GPS">Enable GPS</string>
+    <string name="per_location_needed">Location permission is needed to capture your location</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_weather">Search Weather</string>
+    <string name="gps_weather">Gps Weather</string>
+</resources>
