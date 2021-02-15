@@ -3,11 +3,14 @@ package com.example.weathertask.ui.gps;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,7 +100,7 @@ public class LocationFragment extends Fragment {
         binding.btnCaptureLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startLocationUpdates();
+              if (mLocationRequest ==null) startLocationUpdates(); else requestLoationUpdate();
                 adapter.clear();
             }
         });
@@ -112,7 +115,8 @@ public class LocationFragment extends Fragment {
 
         mLocationRequest = new LocationRequest();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequest.setFastestInterval(1000);
+        mLocationRequest.setFastestInterval(500);
+        mLocationRequest.setInterval(500);
 
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
         builder.addLocationRequest(mLocationRequest);
@@ -148,7 +152,7 @@ public class LocationFragment extends Fragment {
         Double latitude = location.getLatitude();
         Double longitude = location.getLongitude();
         Log.d("newCoo", String.valueOf(latitude) + String.valueOf(longitude));
-       Address address=  LocationUtils.getAddressfromCoordinates(requireContext() , latitude , longitude) ;
+       Address address=  LocationUtils.getAddressfromCoordinates(requireActivity() , latitude , longitude) ;
        if (address!=null && address.getAdminArea()!=null ) binding.tvCityName.setText(address.getAdminArea());
         stopLocationUpdates();
         mViewModel.onNewCoordinate(latitude, longitude);
@@ -168,12 +172,15 @@ public class LocationFragment extends Fragment {
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
 
                 new AlertDialog.Builder(requireContext())
-                        .setTitle("Asking for location permission")
-                        .setMessage("give location permission")
+                        .setTitle("Denied Location permission")
+                        .setMessage("Without location permission you won't be able to use this feature \n please add permission in settings to be able to enjoy this feature")
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                askForPermission();
+                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", requireContext().getPackageName(), null);
+                                intent.setData(uri);
+                                startActivity(intent);
                             }
                         })
                         .create()
